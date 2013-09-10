@@ -2,6 +2,7 @@ package sdec;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
@@ -21,11 +22,14 @@ public class CalculadoraServlet {
 	private Calculadora servicioCalculadora;
 
 	@RequestMapping("calcula.do")
-	public void calcula(HttpServletResponse response) throws IOException {
+	public void calcula(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// Devolvemos la suma gracias al servicio mágico que hemos definido en
 		// el applicationContext.xml:)
+		System.out.println(request.getParameter("num1"));
+		int num1 = Integer.parseInt(request.getParameter("num1"));
+		int num2 = Integer.parseInt(request.getParameter("num2"));
 		response.getOutputStream().println(
 				"El resultado de la llamada al servicio es : "
-						+ servicioCalculadora.sumar(23, 66));
+						+ servicioCalculadora.sumar(num1, num2));
 	}
 }
