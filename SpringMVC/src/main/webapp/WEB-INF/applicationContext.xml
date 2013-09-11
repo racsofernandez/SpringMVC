@@ -18,4 +18,5 @@
 	<context:component-scan base-package="sdec" />
 
 	<bean id="servicioCalculadora" class="sdec.Calculadora" />
+	<bean id="servicioSaludador" class="sdec.Saludador" />
 </beans>
